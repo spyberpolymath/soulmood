@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulMood - Daily Inspiration (Bootstrap Static)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom styles to mimic the original look (especially gradients and dark mode) */
+
+        /* Mood: Joyful (Dark Mode) - Base Colors: Yellow/Orange/Amber */
+        .mood-bg-gradient {
+            background-image: linear-gradient(to bottom right, #fbbf24, #f97316, #d97706);
+            /* from-yellow-400 via-orange-500 to-amber-600 */
+        }
+
+        .mood-nav-gradient {
+            background-image: linear-gradient(to right, #f59e0b, #ea580c);
+            /* from-yellow-500 to-orange-600 */
+        }
+
+        .mood-button-gradient {
+            background-image: linear-gradient(to right, #facc15, #f97316);
+            /* from-yellow-400 to-orange-500 */
+        }
+
+        .mood-accent {
+            color: #fcd34d;
+            /* text-yellow-300 */
+        }
+
+        .navbar,
+        .footer {
+            transition: all 1s ease-in-out;
+        }
+
+        /* Utility classes for subtle effects */
+        .backdrop-blur-sm {
+            backdrop-filter: blur(4px);
+            background-color: rgba(255, 255, 255, 0.06);
+            /* White/10 */
+        }
+
+        .border-white-10 {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .border-white-20 {
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .text-blue-200 {
+            color: #bfdbfe;
+        }
+
+        .text-blue-300 {
+            color: #93c5fd;
+        }
+
+        .text-white-80 {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Custom scrollbar hide for the mood selector */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari and Opera */
+        }
+
+        /* Animation mimics */
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 3s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+
+            50% {
+                transform: translateY(0);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg mood-nav-gradient shadow-lg sticky-top z-50">
+        <div class="container-fluid justify-content-center">
+            <div class="d-flex align-items-center space-x-2">
+                <i data-lucide="heart" class="w-8 h-8 text-white animate-pulse" style="width: 2rem; height: 2rem;"></i>
+                <a href="/" class="navbar-brand text-xl font-bold text-white hover:text-white-90 transition">
+                    SoulMood
+                </a>
+                <span id="mood-badge" class="badge text-bg-light text-white-80 bg-white-20 capitalize fw-normal">
+                    joyful
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="min-vh-100 mood-bg-gradient p-4 d-flex align-items-center justify-content-center transition-all">
+        <div class="w-100" style="max-width: 800px;">
+            <div class="text-center mb-5 space-y-4">
+                <div class="d-flex align-items-center justify-content-center gap-3 mb-2">
+                    <i data-lucide="sparkles" class="w-8 h-8 mood-accent animate-pulse"
+                        style="width: 2rem; height: 2rem;"></i>
+                    <h1 class="text-white fw-bold display-5 tracking-tight">
+                        Daily Inspiration
+                    </h1>
+                    <i data-lucide="sparkles" class="w-8 h-8 mood-accent animate-pulse"
+                        style="width: 2rem; height: 2rem;"></i>
+                </div>
+                <p class="text-blue-200 fs-5">Find peace and guidance through scripture</p>
+            </div>
+
+            <div class="mb-5">
+                <div class="text-center mb-4">
+                    <div
+                        class="d-inline-flex align-items-center gap-3 px-4 py-2 rounded-pill mood-button-gradient shadow-lg border border-white-20 backdrop-blur-sm">
+                        <div class="text-white animate-pulse">
+                            <i data-lucide="sun" class="w-6 h-6" style="width: 1.5rem; height: 1.5rem;"></i>
+                        </div>
+                        <span class="text-white fw-semibold fs-6 text-capitalize">Joyful</span>
+                    </div>
+                </div>
+
+                <div class="position-relative overflow-hidden">
+                    <div class="d-flex gap-2 overflow-x-auto scrollbar-hide pb-2 px-3 scroll-smooth">
+                        <button type="button"
+                            class="btn btn-sm text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill mood-button-gradient shadow-lg scale-110"
+                            style="min-width: fit-content;" data-mood="joyful">
+                            <i data-lucide="sun" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Joyful</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-content;" data-mood="grateful">
+                            <i data-lucide="heart" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Grateful</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-content;" data-mood="hopeful">
+                            <i data-lucide="sparkles" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Hopeful</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-content;" data-mood="anxious">
+                            <i data-lucide="alert-circle" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Anxious</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-content;" data-mood="worried">
+                            <i data-lucide="zap-off" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Worried</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-width;" data-mood="sad">
+                            <i data-lucide="cloud" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Sad</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-content;" data-mood="angry">
+                            <i data-lucide="flame" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Angry</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-content;" data-mood="romantic">
+                            <i data-lucide="heart" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Romantic</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-content;" data-mood="passionate">
+                            <i data-lucide="flame" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Passionate</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-content;" data-mood="intimate">
+                            <i data-lucide="users" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Intimate</span>
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm bg-white-10 text-white-70 border-white-10 backdrop-blur-sm flex-shrink-0 d-flex align-items-center gap-2 px-3 py-2 rounded-pill"
+                            style="min-width: fit-content;" data-mood="longing">
+                            <i data-lucide="compass" style="width: 1.25rem; height: 1.25rem;"></i>
+                            <span class="fs-6 fw-medium text-nowrap">Longing</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mt-3 gap-1">
+                    <div class="w-2 h-2 rounded-circle mood-accent scale-125" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                    <div class="w-2 h-2 rounded-circle bg-white opacity-25" style="width: 8px; height: 8px;"></div>
+                </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-sm rounded-4 shadow-lg overflow-hidden border border-white-20">
+                <div class="mood-nav-gradient p-4 text-center">
+                    <div class="d-flex align-items-center justify-content-center gap-3 mb-2">
+                        <div class="text-white animate-pulse">
+                            <i data-lucide="sun" class="w-8 h-8" style="width: 2rem; height: 2rem;"></i>
+                        </div>
+                        <h2 id="mood-title" class="fs-2 fw-bold text-white text-capitalize">joyful</h2>
+                    </div>
+                    <p id="mood-description" class="text-white-80 fs-5 fw-medium fst-italic">A feeling of great pleasure
+                        and happiness.</p>
+                </div>
+
+                <div class="p-4 p-md-5 space-y-4">
+                    <div class="bg-white/5 backdrop-blur-sm rounded-4 p-4 p-md-5 border border-white-10">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <i data-lucide="sparkles" class="w-6 h-6 mood-accent flex-shrink-0 mt-1"
+                                style="width: 1.5rem; height: 1.5rem;"></i>
+                            <div>
+                                <p class="small text-blue-300 fw-semibold mb-2">INSPIRATIONAL QUOTE</p>
+                                <p id="inspirational-quote" class="text-white fs-5 fw-light fst-italic lh-base">"Loading
+                                    quote..."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/5 backdrop-blur-sm rounded-4 p-4 p-md-5 border border-white-10">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <i data-lucide="book" class="w-6 h-6 mood-accent flex-shrink-0 mt-1"
+                                style="width: 1.5rem; height: 1.5rem;"></i>
+                            <div>
+                                <p class="small text-blue-300 fw-semibold mb-2">SCRIPTURE</p>
+                                <p id="scripture-verse" class="text-white fs-5 lh-base mb-3">"Loading verse..."</p>
+                                <p id="scripture-reference" class="text-blue-200 fw-semibold fs-6">— Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-4 pt-3">
+                        <div
+                            class="d-flex align-items-center gap-2 bg-white/5 px-3 py-1 rounded-pill border border-white-10">
+                            <i data-lucide="calendar" class="w-4 h-4 mood-accent"
+                                style="width: 1rem; height: 1rem;"></i>
+                            <span class="text-blue-200 small fw-medium">
+                                <script>document.write(new Date().toLocaleDateString('en-IN'))</script>
+                            </span>
+                        </div>
+                        <div
+                            class="d-flex align-items-center gap-2 bg-white/5 px-3 py-1 rounded-pill border border-white-10">
+                            <i data-lucide="clock" class="w-4 h-4 mood-accent" style="width: 1rem; height: 1rem;"></i>
+                            <span class="text-blue-200 small fw-medium">
+                                <script>document.write(new Date().toLocaleTimeString('en-IN', { hour12: false }))</script>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5 text-center">
+                <button
+                    class="btn mood-button-gradient text-white px-4 py-2 rounded-pill fw-medium shadow-lg transition-all transform hover:scale-105 d-flex align-items-center gap-2 mx-auto"
+                    id="new-verse-button">
+                    <span class="fs-5">🔄</span> Get New Joyful Verse
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mood-nav-gradient text-white py-4 py-md-5 transition-all">
+        <div class="container">
+            <div class="row align-items-center">
+                <div
+                    class="col-12 col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center justify-content-md-start">
+                    <i data-lucide="heart" class="w-6 h-6 text-white animate-pulse me-2"
+                        style="width: 1.5rem; height: 1.5rem;"></i>
+                    <span class="fs-5 fw-semibold me-2">SoulMood</span>
+                    <span id="footer-mood-badge"
+                        class="badge text-bg-light text-white-80 bg-white-20 capitalize fw-normal">
+                        joyful mode
+                    </span>
+                </div>
+
+                <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
+                    <div class="d-flex align-items-center justify-content-center gap-2 mb-1">
+                        <i data-lucide="mail" class="w-4 h-4" style="width: 1rem; height: 1rem;"></i>
+                        <a href="mailto:projects@spyberpolymath.com"
+                            class="text-white-80 hover-white small text-decoration-none">
+                            projects@spyberpolymath.com
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                        <i data-lucide="globe" class="w-4 h-4" style="width: 1rem; height: 1rem;"></i>
+                        <a href="https://spyberpolymath.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white-80 hover-white small text-decoration-none">
+                            spyberpolymath.com
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-center gap-3 mt-2">
+                        <a href="https://linkedin.com/in/spyberpolymath" target="_blank" rel="noopener noreferrer"
+                            class="text-white-60 hover-white" title="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"
+                                style="width: 1.25rem; height: 1.25rem;"></i></a>
+                        <a href="https://twitter.com/spyberpolymath" target="_blank" rel="noopener noreferrer"
+                            class="text-white-60 hover-white" title="Twitter/X"><i data-lucide="twitter" class="w-5 h-5"
+                                style="width: 1.25rem; height: 1.25rem;"></i></a>
+                        <a href="https://github.com/spyberpolymath" target="_blank" rel="noopener noreferrer"
+                            class="text-white-60 hover-white" title="GitHub"><i data-lucide="github" class="w-5 h-5"
+                                style="width: 1.25rem; height: 1.25rem;"></i></a>
+                        <a href="https://kaggle.com/spyberpolymath" target="_blank" rel="noopener noreferrer"
+                            class="text-white-60 hover-white" title="Kaggle"><i data-lucide="bar-chart-3"
+                                class="w-5 h-5" style="width: 1.25rem; height: 1.25rem;"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 text-center text-md-end">
+                    <p class="text-white-80 small mb-1">&copy; 2024 SoulMood. All rights reserved.</p>
+                    <p class="text-white-80 small mb-1">Your journey to emotional wellness</p>
+                    <p class="text-white-80 small">
+                        Created and managed by
+                        <a href="https://spyberpolymath.com" target="_blank" rel="noopener noreferrer"
+                            class="text-white hover-white fw-medium text-decoration-none">
+                            Aman Anil
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4 gap-2">
+                <div class="w-2 h-2 rounded-circle bg-white scale-125" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+                <div class="w-2 h-2 rounded-circle bg-white opacity-50" style="width: 8px; height: 8px;"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        // Replace Lucide icon tags with their SVG content
+        lucide.createIcons();
+
+        // Data variables
+        let currentMood = 'joyful';
+        let moodDescriptions = {};
+        let moodsData = {};
+        let versesData = {};
+
+        async function loadData() {
+            try {
+                const moodsResponse = await fetch('./data/moods.json');
+                moodsData = await moodsResponse.json();
+                const versesResponse = await fetch('./data/bibleVerses.json');
+                versesData = await versesResponse.json();
+                // Set descriptions from themes
+                for (const mood in moodsData) {
+                    moodDescriptions[mood] = moodsData[mood].theme;
+                }
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        }
+
+        function updateContent() {
+            // Update quote
+            const quotes = moodsData[currentMood]?.quotes || [];
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)] || 'No quote available';
+            document.getElementById('inspirational-quote').textContent = `"${randomQuote}"`;
+
+            // Update verse
+            const verses = versesData[currentMood] || [];
+            const randomVerse = verses[Math.floor(Math.random() * verses.length)] || { verse: 'No verse available', reference: '' };
+            document.getElementById('scripture-verse').textContent = `"${randomVerse.verse}"`;
+            document.getElementById('scripture-reference').textContent = `— ${randomVerse.reference}`;
+
+            // Update mood display
+            document.getElementById('mood-badge').textContent = currentMood;
+            document.getElementById('mood-title').textContent = currentMood;
+            document.getElementById('mood-description').textContent = moodDescriptions[currentMood] || 'Description not available';
+            document.getElementById('new-verse-button').innerHTML = `<span class="fs-5">🔄</span> Get New ${currentMood.charAt(0).toUpperCase() + currentMood.slice(1)} Verse`;
+        }
+
+        function changeMood(mood) {
+            currentMood = mood;
+            // Update button styles
+            document.querySelectorAll('[data-mood]').forEach(btn => {
+                if (btn.dataset.mood === mood) {
+                    btn.classList.add('mood-button-gradient', 'shadow-lg', 'scale-110');
+                    btn.classList.remove('bg-white-10');
+                } else {
+                    btn.classList.remove('mood-button-gradient', 'shadow-lg', 'scale-110');
+                    btn.classList.add('bg-white-10');
+                }
+            });
+
+            // Update footer badge
+            document.getElementById('footer-mood-badge').textContent = currentMood + ' mode';
+
+            updateContent();
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadData();
+            updateContent();
+            // Add event listeners to mood buttons
+            document.querySelectorAll('[data-mood]').forEach(btn => {
+                btn.addEventListener('click', () => changeMood(btn.dataset.mood));
+            });
+        });
+
+        // Button to get new verse
+        document.getElementById('new-verse-button').addEventListener('click', updateContent);
+    </script>
+</body>
+
+</html>
